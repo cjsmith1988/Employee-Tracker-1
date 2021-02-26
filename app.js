@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
-const {allEmployees,empByDept,empByManager} = require('./lib/employee.js');
-const {allDepartments} = require('./lib/department.js');
-const {allRoles} = require('./lib/role.js');
+const {allEmployees,empByDept,empByManager,removeEmployee,updateEmpRole,updateManager,addEmployee} = require('./lib/employee.js');
+const {allDepartments,removeDept,addDept,budgetByDept} = require('./lib/department.js');
+const {allRoles,removeRole,addRole} = require('./lib/role.js');
+const cons = require('console.table');
 
 class company
 {
@@ -41,25 +42,27 @@ class company
                 case 'View All Employees By Manager':
                     return empByManager();
                 case 'Add Employee':
-                    break;
+                    return addEmployee();
                 case 'Remove Employee':
-                    break;
+                    return removeEmployee();
                 case 'Update Employee Role':
-                    break;
+                    return updateEmpRole();
                 case 'Update Employee Manager':
-                    break;
+                    return updateManager();
                 case 'View All Roles':
                     return allRoles();
                 case 'Add Role':
-                    break;
+                    return addRole();
                 case 'Remove Role':
-                    break;
+                    return removeRole();
                 case 'View All Departments':
                     return allDepartments();
                 case 'Add Department':
-                    break;
+                    return addDept();
+                case 'Remove Department':
+                    return removeDept();
                 case 'View the total utilized budget of a department':
-                    break;
+                    return budgetByDept();
             }
             return;
         })
