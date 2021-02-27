@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
+var connection = require('./db/database');
+const cons = require('console.table');
 const {allEmployees,empByDept,empByManager,removeEmployee,updateEmpRole,updateManager,addEmployee} = require('./lib/employee.js');
 const {allDepartments,removeDept,addDept,budgetByDept} = require('./lib/department.js');
 const {allRoles,removeRole,addRole} = require('./lib/role.js');
-const cons = require('console.table');
 
 class company
 {
@@ -28,11 +29,17 @@ class company
                 'View All Departments',
                 'Add Department',
                 'Remove Department',
-                'View the total utilized budget of a department'
+                'View the total utilized budget of a department',
+                'Close Application'
             ]
         })
         .then(action =>
         {
+            console.log(`
+=============================================================================================
+                                ${action.task.toUpperCase()}
+=============================================================================================
+            `);
             switch(action.task)
             {
                 case 'View All Employees':
@@ -63,19 +70,35 @@ class company
                     return removeDept();
                 case 'View the total utilized budget of a department':
                     return budgetByDept();
+                case 'Close Application':
+                    return "end";
             }
             return;
         })
         .then(res=>
         {
-            console.table(res);
-            this.queries();
+            if(res ==="end")
+            {
+                connection.end();
+            }
+            else
+            {
+                console.table(res);
+                console.log(`
+=============================================================================================
+                `);
+                this.queries();
+            }
         });
     }
 }
 
-// connection.end();
 
+console.log(`
+=============================================================================================
+                                START EMPLOYEE TRACKER
+=============================================================================================
+`);
 
 const x = new company();
 x.queries();
