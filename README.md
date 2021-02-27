@@ -62,7 +62,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 
 
-Walkthrough Video: 
+Walkthrough Video: https://drive.google.com/file/d/1QE5oPUFddIjgEDllIiKO1YJk3CDkF701/view
 
 
 
@@ -77,7 +77,7 @@ Walkthrough Video:
   ## Tests
   Project Reprository: https://github.com/raedaltaki/Employee-Tracker
 
-  Walkthrough Video: 
+  Walkthrough Video: https://drive.google.com/file/d/1QE5oPUFddIjgEDllIiKO1YJk3CDkF701/view
 
 
   ## Questions
